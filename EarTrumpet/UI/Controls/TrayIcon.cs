@@ -89,12 +89,7 @@ namespace EarTrumpet.UI.Controls
 
         private void MouseGlobalHook_MouseWheel(object sender, MouseEventArgs e)
         {
-            var notifyIconLocation = NotifyIconInfo.GetNotifyIconLocation(_trayIcon);
-
-            if (notifyIconLocation.left <= Cursor.Position.X &&
-                notifyIconLocation.right >= Cursor.Position.Y &&
-                notifyIconLocation.top <= Cursor.Position.Y &&
-                notifyIconLocation.bottom >= Cursor.Position.Y)
+            if (CursorAtScreenBottomEdge() || CursorOverNotificationIcon())
             {
                 Trace.WriteLine($"TrayIcon MouseGlobalHook_MouseWheel {e.Delta}");
                 if (e.Delta > 0)
@@ -105,6 +100,21 @@ namespace EarTrumpet.UI.Controls
                 {
                     _trayViewModel.WheelDown?.Execute();
                 }
+            }
+
+            bool CursorAtScreenBottomEdge()
+            {
+                return Cursor.Position.Y >= (Screen.PrimaryScreen.Bounds.Height - 2);
+            }
+
+            bool CursorOverNotificationIcon()
+            {
+                var notifyIconLocation = NotifyIconInfo.GetNotifyIconLocation(_trayIcon);
+
+                return notifyIconLocation.left <= Cursor.Position.X &&
+                       notifyIconLocation.right >= Cursor.Position.Y &&
+                       notifyIconLocation.top <= Cursor.Position.Y &&
+                       notifyIconLocation.bottom >= Cursor.Position.Y;
             }
         }
     }

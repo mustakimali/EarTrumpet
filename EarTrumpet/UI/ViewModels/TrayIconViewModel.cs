@@ -126,7 +126,7 @@ namespace EarTrumpet.UI.ViewModels
                     new ContextMenuSeparator{ },
                     new ContextMenuItem{ DisplayName = Properties.Resources.SettingsWindowText,     Command = OpenSettings },
                     new ContextMenuItem{ DisplayName = Properties.Resources.ContextMenuSendFeedback,Command = new RelayCommand(FeedbackService.OpenFeedbackHub) },
-                    new ContextMenuItem{ DisplayName = Properties.Resources.ContextMenuExitTitle,   Command = new RelayCommand(App.Current.Shutdown) },
+                    new ContextMenuItem{ DisplayName = Properties.Resources.ContextMenuExitTitle,   Command = new RelayCommand(Application.Current.Shutdown) },
                 });
 
                 if (Features.IsEnabled(Feature.SoundSettingsMoSetPageOnTrayIcon))
