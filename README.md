@@ -1,5 +1,7 @@
 # EarTrumpet
 
+> This is a fork of the [original EarTrumpet](https://github.com/File-New-Project/EarTrumpet) that adds the ability to control volume using the mouse wheel when over the taskbar icon or at the bottom edge of the screen.
+
 ![Ear Trumpet Screenshot](./Graphics/hero1.gif)
 
 ## Features
